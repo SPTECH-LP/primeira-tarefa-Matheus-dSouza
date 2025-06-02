@@ -4,11 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeira Tarefa</title>
+    <title>Revisão Matriz</title>
 </head>
 
 <body>
-
+    <button onclick="montarMatriz()">Montar Matriz</button>
+    <div class="container" id="divMatriz"></div> <br>
+    <input type="text" id="iptLinha">
+    <input type="text" id="iptColuna"> <br>
+    <button onclick="consultarMatriz()">Consultar Matriz</button>
+    <div id="resposta"></div>
 </body>
+
+<script>
+    let matriz = []
+
+    function montarMatriz() {
+        divMatriz.innerHTML = ``
+        let qtdLinhas = 3;
+        let qtdColunas = 3;
+        let valorInicial = 5;
+
+        for (let i = 0; i < qtdLinhas; i++) {
+            matriz[i] = []
+            for (let j = 0; j < qtdColunas; j++) {
+                matriz[i][j] = valorInicial
+                valorInicial += 5
+                divMatriz.innerHTML += `<div class="item">${matriz[i][j]}</div>`
+            }
+        }
+    }
+
+    function consultarMatriz() {
+        let linha = Number(iptLinha.value)
+        let coluna = Number(iptColuna.value)
+
+        resposta.innerHTML = `O elemento é ${matriz[linha][coluna]}`
+    }
+</script>
+
+<style>
+    .container {
+        width: 200px;
+        display: grid;
+        text-align: center;
+        justify-items: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .item {
+        background-color: aqua;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        text-align: center;
+    }
+</style>
 
 </html>
